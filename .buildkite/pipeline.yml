@@ -1,0 +1,19 @@
+---
+steps:
+  - name: ":docker: :construction:"
+    command: "bin/ci build"
+    agents:
+      queue: build
+
+  - wait
+
+  - name: ":docker: :label:"
+    command: "bin/ci tag latest"
+    branches: master
+
+  - wait
+
+  - name: ":buildkite: :shipit:"
+    command: "bin/ci deploy staging"
+    branches: master
+
