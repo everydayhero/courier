@@ -1,0 +1,6 @@
+#!/bin/bash -e
+
+mkdir -p /data/sincedb
+chown logstash:logstash /data/sincedb
+
+docker-entrypoint "$@"
