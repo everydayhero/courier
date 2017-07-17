@@ -8,7 +8,7 @@ steps:
   - wait
 
   - name: ":docker: :label:"
-    command: "bin/ci tag latest"
+    command: "bin/ci tag staging"
     branches: master
 
   - wait
