@@ -13,7 +13,13 @@ steps:
 
   - wait
 
-  - name: ":buildkite: :shipit:"
-    command: "plain-utils deploy-convox courier-staging -e tag=$COMMIT"
+  - name: ":buildkite: :shipit: :suspect:"
+    command: "plain-utils deploy-convox courier-staging"
+    branches: master
+
+  - wait
+
+  - name: ":buildkite: :shipit: :feelsgood:"
+    command: "plain-utils deploy-convox courier-prod"
     branches: master
 
