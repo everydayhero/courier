@@ -4,10 +4,9 @@ ENV LOG_GROUP_PREFIX="logstash-"
 
 EXPOSE 9600
 
+ADD plugins /usr/share/logstash/plugins
 RUN /usr/share/logstash/bin/logstash-plugin uninstall x-pack && \
-  /usr/share/logstash/bin/logstash-plugin install logstash-output-logentries && \
-  /usr/share/logstash/bin/logstash-plugin install logstash-input-cloudwatch_logs
+  /usr/share/logstash/bin/logstash-plugin install logstash-output-logentries
 RUN rm -f /usr/share/logstash/pipeline/logstash.conf
 ADD pipeline/ /usr/share/logstash/pipeline/
 ADD config/ /usr/share/logstash/config/
-
