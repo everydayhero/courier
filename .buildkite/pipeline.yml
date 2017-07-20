@@ -19,6 +19,12 @@ steps:
 
   - wait
 
+  - name: ":docker: :label:"
+    command: "bin/ci tag production"
+    branches: master
+
+  - wait
+
   - name: ":buildkite: :shipit: :feelsgood:"
     command: "plain-utils deploy-convox courier-prod"
     branches: master
