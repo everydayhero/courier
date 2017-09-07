@@ -2,13 +2,10 @@
 version: '2'
 services:
   worker:
-    build: .
-    volumes:
-      - "./data:/data"
+    image: 'everydayhero/courier:$CONVOX_RACK'
     environment:
       - LOG_GROUP_PREFIX
       - LOGENTRIES_TOKEN
-      - NAMESPACE
       - STATSD_HOST
       - STATSD_PORT
       - AWS_DEFAULT_REGION

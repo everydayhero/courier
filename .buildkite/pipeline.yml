@@ -14,8 +14,16 @@ steps:
   - wait
 
   - name: ":buildkite: :shipit: :suspect:"
-    command: "plain-utils deploy-convox courier-staging"
-    branches: master
+    command: "bin/deploy courier"
+    env:
+      CONVOX_RACK: staging
+      LOG_GROUP_PREFIX: staging-
+      STATSD_HOST: statsd.staging.internal
+      STATSD_PORT: 8125
+      LOGENTRIES_TOKEN: ""
+      AWS_DEFAULT_REGION: ""
+      AWS_ACCESS_KEY_ID: ""
+      AWS_SECRET_ACCESS_KEY: ""
 
   - wait
 
@@ -26,6 +34,14 @@ steps:
   - wait
 
   - name: ":buildkite: :shipit: :feelsgood:"
-    command: "plain-utils deploy-convox courier-prod"
+    command: "bin/deploy courier"
     branches: master
-
+    env:
+      CONVOX_RACK: production
+      LOG_GROUP_PREFIX: production-
+      STATSD_HOST: statsd.production.internal
+      STATSD_PORT: 8125
+      LOGENTRIES_TOKEN: ""
+      AWS_DEFAULT_REGION: ""
+      AWS_ACCESS_KEY_ID: ""
+      AWS_SECRET_ACCESS_KEY: ""
