@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+APP="$1"
+WORKDIR=$(mktemp -d)
+COMPOSE_FILE="${COMPOSE_FILE:-docker-compose.yml}"
+CONVOX_FILE="${WORKDIR}/${COMPOSE_FILE}"
+
+docker-compose config > "$CONVOX_FILE"
+
+cd "$WORKDIR"
+
+convox deploy -f "$COMPOSE_FILE" --no-cache --wait --app "$APP" --description "$BUILDKITE_BUILD_URL"
