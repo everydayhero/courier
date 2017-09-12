@@ -4,6 +4,7 @@ services:
   worker:
     image: 'everydayhero/courier:$CONVOX_RACK'
     environment:
+      - LS_JAVA_OPTS
       - LOG_GROUP_PREFIX
       - LOGENTRIES_TOKEN
       - STATSD_HOST

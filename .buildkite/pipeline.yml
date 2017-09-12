@@ -17,6 +17,7 @@ steps:
     command: "bin/deploy courier"
     env:
       CONVOX_RACK: staging
+      LS_JAVA_OPTS: "-Xmx1g"
       LOG_GROUP_PREFIX: staging-
       STATSD_HOST: statsd.staging.internal
       STATSD_PORT: 8125
@@ -38,6 +39,7 @@ steps:
     branches: master
     env:
       CONVOX_RACK: production
+      LS_JAVA_OPTS: "-Xmx1g"
       LOG_GROUP_PREFIX: production-
       STATSD_HOST: statsd.production.internal
       STATSD_PORT: 8125
