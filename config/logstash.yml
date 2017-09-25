@@ -1,3 +1,4 @@
+log.level: "debug"
 http.host: "0.0.0.0"
 path.config: /usr/share/logstash/pipeline
 path.plugins:
