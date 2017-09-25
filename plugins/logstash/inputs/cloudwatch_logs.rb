@@ -123,7 +123,7 @@ class LogStash::Inputs::CloudWatch_Logs < LogStash::Inputs::Base
           process_group(group)
         end # groups.each
       rescue Aws::CloudWatchLogs::Errors::ThrottlingException
-        @logger.debug("reached rate limit")
+        @logger.error("reached rate limit")
       end
 
       Stud.stoppable_sleep(@interval) { stop? }
